@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+
+   
+  
+    <div class="mobileframe">
+</div>
+
+<a href="https://hwajn.github.io/plumblossom/" style="position:fixed;top:0;left:50px;">1</a>
+<a href="https://hwajn.github.io/orchid/" style="position:fixed;top:0;right:50px;">2</a>
+<a href="https://hwajn.github.io/rose/" style="position:fixed;bottom:30px;right:50px;">3</a>
+<a href="https://hwajn.github.io/interface/" style="position:fixed;bottom:30px;left:50px; color:transparent;">4</a>
+    
+
+    <div class="frame">
+
+        <div class="overlay">
+            
+
+    </div>
+
+        <img  class="image" id="imgsequence" src="rose">
+        <img src="blur.png" style="transform:scale(1);position:fixed;top:-130px;">
+    </div>
+    
+
+
+    
+  
+    <div class="pageExtender"></div>
+
+    <div class="dllink">
+
+        
+    </div>
+    <script>
+
+
+
+        //https://stackoverflow.com/questions/54132150/preloading-images-in-javascript-need-an-alert-when-completed
+        //this makes images preload all in parallel
+
+    var imagefiles = [
+    "rose/"];
+    
+    function PreLoadAllImages () {
+        imagefiles.forEach(function(image){
+            var img = document.createElement('img');
+            img.src = image;
+            document.body.appendChild(img);});
+        $('img').hide();
+    } 
+    
+    var all_loaded;
+    
+    function CheckImages() {
+        $('img').each(function(){ // selecting all image element on the page
+        var img = new Image($(this)); // creating image element
+        img.src = $(this).attr('src'); // pass src to image object
+        if(img.complete==false) {
+            all_loaded=false;
+            return false;
+        }
+        all_loaded=true;
+        return true;});
+    }
+    
+    function CheckLoadingImages() {
+        var result;
+        var Checking=setInterval(function(){
+             result=CheckImages();
+             if(all_loaded==true) {
+                 clearInterval(Checking);
+                 MsgAfterLoading();
+                }
+             }, 2000);
+    }
+    
+    function MsgAfterLoading() {
+        alert('All Images Loaded');
+    }
+</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+
+    <script src="scrollmagic.js"></script>
+
+
+
+
+
+
+</body>
+
+</html>
